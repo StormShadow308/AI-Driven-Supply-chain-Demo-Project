@@ -1,0 +1,74 @@
+.metricCard {
+  transition: transform 0.2s ease;
+}
+
+.metricCard:hover {
+  transform: translateY(-2px);
+}
+
+.metricHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.metricTitle {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  font-weight: 500;
+}
+
+.metricIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius);
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+}
+
+.metricValue {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin: var(--space-2) 0 var(--space-4) 0;
+}
+
+.metricFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metricChange {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius);
+}
+
+.positive {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-500);
+}
+
+.negative {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error-500);
+}
+
+.neutral {
+  background-color: rgba(100, 116, 139, 0.1);
+  color: var(--neutral-500);
+}
+
+.metricSubtitle {
+  font-size: var(--text-xs);
+  color: var(--neutral-500);
+}

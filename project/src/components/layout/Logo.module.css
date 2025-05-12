@@ -1,0 +1,71 @@
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--primary-700);
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-2);
+  color: var(--primary-600);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoName {
+  font-weight: 700;
+  color: var(--neutral-900);
+  letter-spacing: -0.02em;
+}
+
+.logoTagline {
+  font-size: 0.7em;
+  font-weight: 500;
+  color: var(--neutral-500);
+  line-height: 1;
+}
+
+/* Size variants */
+.small .logoIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.small .logoName {
+  font-size: var(--text-lg);
+}
+
+.small .logoTagline {
+  display: none;
+}
+
+.medium .logoIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.medium .logoName {
+  font-size: var(--text-xl);
+}
+
+.medium .logoTagline {
+  font-size: var(--text-xs);
+}
+
+.large .logoIcon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.large .logoName {
+  font-size: var(--text-3xl);
+}
+
+.large .logoTagline {
+  font-size: var(--text-sm);
+}

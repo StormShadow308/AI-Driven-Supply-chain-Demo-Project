@@ -1,0 +1,300 @@
+.authPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  /* Background image is set via inline style in AuthPage.tsx */
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.authContainer {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2rem; /* Reduced from 2.5rem */
+  border-radius: 20px; /* Slightly less rounded for a more standard look */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px); /* Slightly less blur */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 380px; /* Reduced from 480px */
+  /* min-height is removed, content dictates height */
+  text-align: center;
+  color: white;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will center content if it's shorter than viewport */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.authContainer:hover {
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logoContainer {
+  margin-bottom: 1.25rem; /* Reduced from 1.5rem */
+  text-align: center;
+}
+
+.title {
+  font-size: 2.2rem; /* Reduced from 2.8rem */
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
+}
+
+.subtitle {
+  display: none; /* Hidden as per the target image */
+}
+
+.formWrapper {
+  position: relative;
+  overflow: visible; /* Allow potential icon overflows */
+  min-height: auto; /* Remove fixed min-height */
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* Slightly reduced from 0.875rem */
+  width: 100%;
+}
+
+.inputGroup {
+  text-align: left;
+  position: relative;
+  margin-bottom: 0.25rem; /* Reduced from 0.5rem */
+}
+
+.inputGroup label {
+  display: none; /* Labels are used as placeholders in the image */
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.8rem 1rem; /* Vertical padding reduced from 0.9rem */
+  padding-right: 2.5rem; /* Adjusted to match icon size if needed */
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px; /* More standard border-radius */
+  font-size: 0.95rem; /* Slightly smaller font for inputs */
+  color: white;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.inputGroup input::placeholder {
+  color: rgba(255, 255, 255, 0.8); /* Lighter placeholder */
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8); /* Brighter border on focus */
+  background-color: rgba(255, 255, 255, 0.3); /* Lighter background on focus */
+}
+
+.inputIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.8); /* Lighter icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Allow clicks to pass through to input */
+  transition: all 0.3s ease;
+}
+
+.inputIcon svg {
+  width: 16px; /* Slightly smaller icons */
+  height: 16px;
+  stroke: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.inputGroup:focus-within .inputIcon svg {
+  stroke: white;
+  transform: scale(1.1);
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem; /* Slightly smaller font */
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.25rem; /* Reduced from 0.5rem */
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+}
+
+.rememberMe input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: white; /* Style checkbox color */
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.rememberMe label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: normal;
+}
+
+.forgotPassword {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.submitButton {
+  background-color: white;
+  color: #d95a00;
+  padding: 0.8rem 1.5rem; /* Vertical padding reduced from 0.9rem */
+  border: none;
+  border-radius: 8px; /* More standard button radius */
+  font-size: 1rem; /* Slightly smaller button font */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.875rem; /* Reduced from 1rem */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Full width button */
+  letter-spacing: 0.5px; /* Improved text spacing */
+}
+
+.submitButton:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.submitButton:active {
+  transform: scale(0.98) translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.toggleText {
+  font-size: 0.85rem; /* Slightly smaller font */
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem; /* Reduced from 1.5rem */
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: white; /* White link */
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.25rem;
+  text-decoration: underline;
+}
+
+.toggleButton:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.errorMessage {
+  color: white; /* For better contrast on a semi-transparent red background */
+  background-color: rgba(220, 53, 69, 0.25); /* Semi-transparent danger red */
+  padding: 0.75rem 1rem; /* Standardized padding */
+  border-radius: 8px; /* Consistent with other elements */
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 1px solid rgba(220, 53, 69, 0.5); /* Slightly more opaque border for clarity */
+  width: 100%; /* Ensure it takes full width of its container */
+  box-sizing: border-box; /* Include padding/border in width calculation */
+}
+
+.divider {
+  text-align: center;
+  margin: 0.875rem 0; /* Reduced from 1rem */
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 1px;
+  margin: 0 0.5rem;
+}
+
+.googleButton {
+  background-color: #4285F4 !important;
+  color: white !important;
+  /* padding, font-size, border-radius will match .submitButton due to shared class */
+}
+
+.googleButton:hover {
+  background-color: #357ae8 !important; /* Darker Google blue */
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .authContainer {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+    margin: 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .inputGroup input {
+    padding: 0.7rem 0.9rem;
+    padding-right: 2.2rem;
+  }
+  .submitButton {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
+  .formWrapper {
+    margin-bottom: 1rem;
+  }
+  .optionsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,135 @@
+.section {
+  padding: 120px 0;
+  position: relative;
+  background-color: white;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-16);
+}
+
+.sectionTitle {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  font-size: var(--text-xl);
+  color: var(--neutral-600);
+  line-height: 1.5;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.testimonial {
+  background-color: var(--neutral-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  border: 1px solid var(--neutral-200);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-200);
+}
+
+.quoteIcon {
+  color: var(--primary-200);
+  margin-bottom: var(--space-4);
+}
+
+.quote {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--neutral-800);
+  margin-bottom: var(--space-6);
+  flex: 1;
+}
+
+.authorInfo {
+  border-top: 1px solid var(--neutral-200);
+  padding-top: var(--space-4);
+}
+
+.authorName {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-1);
+}
+
+.authorRole {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.logosContainer {
+  margin-top: var(--space-16);
+}
+
+.logosRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0.6;
+}
+
+.logoItem {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--neutral-600);
+  text-align: center;
+  min-width: 160px;
+}
+
+@media (max-width: 1024px) {
+  .testimonialsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .logosRow {
+    justify-content: center;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+  
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sectionTitle {
+    font-size: var(--text-3xl);
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--text-lg);
+  }
+}

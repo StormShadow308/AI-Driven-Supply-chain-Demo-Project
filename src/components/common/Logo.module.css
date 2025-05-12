@@ -1,0 +1,71 @@
+.logo {
+  display: flex;
+  align-items: center;
+  color: white; /* Default color for the container, icons might inherit this */
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-2, 0.5rem); /* Added fallback for --space-2 */
+  color: white; /* Ensure icon is white */
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoName {
+  font-weight: 700;
+  color: white; /* Ensure logo name is white */
+  letter-spacing: -0.02em;
+}
+
+.logoTagline {
+  font-size: 0.7em;
+  font-weight: 500;
+  color: #cccccc; /* Light grey for tagline, adjust as needed */
+  line-height: 1;
+}
+
+/* Size variants */
+.small .logoIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.small .logoName {
+  display: none; /* Hide name for small logo to show icon only */
+}
+
+.small .logoTagline {
+  display: none;
+}
+
+.medium .logoIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.medium .logoName {
+  font-size: var(--text-xl, 1.25rem); /* Added fallback */
+}
+
+.medium .logoTagline {
+  font-size: var(--text-xs, 0.75rem); /* Added fallback */
+}
+
+.large .logoIcon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.large .logoName {
+  font-size: var(--text-3xl, 1.875rem); /* Added fallback */
+}
+
+.large .logoTagline {
+  font-size: var(--text-sm, 0.875rem); /* Added fallback */
+} 

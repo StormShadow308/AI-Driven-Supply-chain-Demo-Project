@@ -1,0 +1,99 @@
+.chartContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  margin-bottom: var(--space-3);
+}
+
+.chartTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin: 0;
+}
+
+.chartSubtitle {
+  font-size: var(--text-sm);
+  color: var(--neutral-500);
+  margin: var(--space-1) 0 0 0;
+}
+
+.chartContent {
+  flex: 1;
+  position: relative;
+}
+
+/* Grid lines */
+.gridLine {
+  stroke: var(--neutral-200);
+  stroke-width: 1;
+  stroke-dasharray: 2;
+}
+
+/* Area chart */
+.areaPath {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.linePath {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 1.5s ease-in-out forwards;
+}
+
+.dataPoint {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  animation-delay: 1.2s;
+}
+
+/* Bar chart */
+.bar {
+  transform-origin: bottom;
+  animation: growUp 0.6s ease-out forwards;
+}
+
+/* X-axis labels */
+.xLabels {
+  display: flex;
+  position: relative;
+  margin-top: var(--space-2);
+  height: 20px;
+  width: 100%;
+}
+
+.xLabel {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  color: var(--neutral-500);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes growUp {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@media (max-width: 768px) {
+  .xLabel {
+    font-size: 9px;
+  }
+}

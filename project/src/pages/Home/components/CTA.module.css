@@ -1,0 +1,157 @@
+.section {
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.textContent {
+  flex: 1;
+  max-width: 580px;
+}
+
+.title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: var(--text-xl);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-8);
+  line-height: 1.5;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.primaryButton {
+  background: linear-gradient(to right, var(--primary-600), var(--primary-700));
+  color: white;
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.secondaryButton {
+  background-color: white;
+  color: var(--primary-700);
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius);
+  border: 1px solid var(--neutral-300);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background-color: var(--neutral-100);
+  border-color: var(--primary-400);
+}
+
+.note {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.imageContent {
+  flex: 1;
+  max-width: 580px;
+}
+
+.ctaImage {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  transform: perspective(1000px) rotateY(5deg) rotateX(-5deg);
+  transition: all 0.5s ease;
+}
+
+.ctaImage:hover {
+  transform: perspective(1000px) rotateY(0) rotateX(0);
+}
+
+.ctaImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.backgroundGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, var(--neutral-50));
+  z-index: 0;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+  
+  .textContent {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .ctaButtons {
+    justify-content: center;
+  }
+  
+  .imageContent {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+  
+  .title {
+    font-size: var(--text-3xl);
+  }
+  
+  .subtitle {
+    font-size: var(--text-lg);
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}

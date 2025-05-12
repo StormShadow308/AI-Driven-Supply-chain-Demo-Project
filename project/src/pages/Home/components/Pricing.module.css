@@ -1,0 +1,320 @@
+.section {
+  padding: 120px 0;
+  background-color: var(--neutral-50);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-16);
+}
+
+.sectionTitle {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  font-size: var(--text-xl);
+  color: var(--neutral-600);
+  line-height: 1.5;
+  margin-bottom: var(--space-8);
+}
+
+.billingToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  font-size: var(--text-base);
+  color: var(--neutral-600);
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: var(--neutral-300);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle:hover {
+  background-color: var(--neutral-400);
+}
+
+.toggleBall {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.toggleRight {
+  transform: translateX(24px);
+}
+
+.active {
+  color: var(--primary-600);
+  font-weight: 600;
+}
+
+.plansContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.planCard {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-200);
+  padding: var(--space-8);
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.planCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--neutral-300);
+}
+
+.popularPlan {
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-md);
+  transform: scale(1.05);
+}
+
+.popularPlan:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-400);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(to right, var(--primary-600), var(--primary-700));
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.planHeader {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.planName {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-2);
+}
+
+.planPrice {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: baseline;
+}
+
+.currency {
+  font-size: var(--text-xl);
+  margin-right: 2px;
+  vertical-align: top;
+}
+
+.period {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--neutral-500);
+  margin-left: var(--space-1);
+}
+
+.planDescription {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  line-height: 1.5;
+}
+
+.featuresList {
+  list-style: none;
+  margin-bottom: var(--space-8);
+  flex: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+  margin-right: var(--space-3);
+  flex-shrink: 0;
+}
+
+.disabledFeature {
+  opacity: 0.5;
+}
+
+.featureText {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  line-height: 1.5;
+}
+
+.planButton {
+  padding: var(--space-3) 0;
+  border-radius: var(--radius);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.primaryButton {
+  background: linear-gradient(to right, var(--primary-600), var(--primary-700));
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.secondaryButton {
+  background-color: white;
+  color: var(--primary-700);
+  border: 1px solid var(--primary-300);
+}
+
+.secondaryButton:hover {
+  background-color: var(--primary-50);
+  border-color: var(--primary-400);
+}
+
+.enterpriseCallout {
+  background: linear-gradient(to right, var(--primary-700), var(--primary-800));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.calloutContent {
+  padding: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.calloutTitle {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.calloutDescription {
+  font-size: var(--text-lg);
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+.calloutButton {
+  background-color: white;
+  color: var(--primary-700);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.calloutButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+  .plansContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-10);
+  }
+  
+  .popularPlan {
+    grid-column: span 2;
+    transform: scale(1);
+  }
+  
+  .popularPlan:hover {
+    transform: translateY(-5px);
+  }
+  
+  .calloutContent {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+  
+  .plansContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .popularPlan {
+    grid-column: auto;
+  }
+  
+  .sectionTitle {
+    font-size: var(--text-3xl);
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--text-lg);
+  }
+}

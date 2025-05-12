@@ -1,0 +1,263 @@
+.heroSection {
+  position: relative;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heroContent {
+  flex: 1;
+  max-width: 580px;
+  margin-right: var(--space-8);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--primary-600);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-6);
+}
+
+.badge svg {
+  margin-right: var(--space-2);
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: var(--space-5);
+  background: linear-gradient(to right, var(--neutral-900), var(--primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.highlight {
+  display: inline-block;
+  position: relative;
+  color: #ffffff !important; /* White text color */
+  -webkit-text-fill-color: #ffffff !important; /* Ensure text is filled white, overriding parent styles */
+  background: none !important; /* Remove parent's gradient background for this element */
+  -webkit-background-clip: initial !important; /* Reset background clipping to default behavior */
+  background-clip: initial !important; /* Reset background clipping to default behavior */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Adjusted subtle text shadow for visibility */
+  z-index: 1; /* Ensure it's above other elements like its own ::after */
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 8px;
+  width: 100%;
+  background-color: rgba(14, 165, 233, 0.3);
+  z-index: -1;
+  border-radius: var(--radius);
+}
+
+.heroSubtitle {
+  font-size: var(--text-xl);
+  line-height: 1.5;
+  color: var(--neutral-700);
+  margin-bottom: var(--space-8);
+}
+
+.heroCta {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.primaryButton {
+  background: linear-gradient(to right, var(--primary-600), var(--primary-700));
+  color: white;
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.secondaryButton {
+  background-color: white;
+  color: var(--primary-700);
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius);
+  border: 1px solid var(--neutral-300);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background-color: var(--neutral-100);
+  border-color: var(--primary-400);
+}
+
+.statsContainer {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.statItem {
+  flex: 1;
+  text-align: center;
+}
+
+.statValue {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--primary-700);
+  margin-bottom: var(--space-1);
+}
+
+.statLabel {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--neutral-200);
+}
+
+.heroImageContainer {
+  flex: 1;
+  position: relative;
+  max-width: 580px;
+  will-change: transform;
+}
+
+.heroImage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+  transition: all 0.5s ease;
+}
+
+.heroImage:hover {
+  transform: perspective(1000px) rotateY(0) rotateX(0);
+}
+
+.heroImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.floatingObject {
+  position: absolute;
+  padding: var(--space-3);
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+  animation: float 5s ease-in-out infinite;
+}
+
+.floatingObject:nth-child(odd) {
+  animation-delay: 1s;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.08), transparent 800px);
+  z-index: 0;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .heroContent {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: var(--space-12);
+    text-align: center;
+  }
+  
+  .heroCta {
+    justify-content: center;
+  }
+  
+  .heroImageContainer {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 80px 0 40px;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: var(--text-lg);
+  }
+  
+  .statsContainer {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .divider {
+    width: 80%;
+    height: 1px;
+  }
+  
+  .heroCta {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}

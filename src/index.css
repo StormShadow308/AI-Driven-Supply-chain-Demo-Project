@@ -1,0 +1,688 @@
+/* tailwindcss directive */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%; /* Deep dark background */
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 7%; /* Slightly lighter card background */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 250 80% 60%; /* Purple */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 70% 50%; /* Blue */
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 270 70% 50%; /* Vibrant purple */
+    --accent-foreground: 0 0% 98%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 12%;
+    --input: 240 10% 15%;
+    --ring: 240 10% 20%;
+
+    --radius: 0.75rem; /* Slightly larger radius */
+
+    --sidebar: 240 10% 3%; /* Very dark sidebar */
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-border: 240 10% 8%;
+    --sidebar-active-foreground: var(--primary-foreground); /* Default to primary foreground */
+    
+    /* Default sidebar width */
+    --sidebar-width: 256px;
+  }
+
+  .light {
+    --background: 0 0% 98%; /* near white */
+    --foreground: 240 10% 10%; /* dark gray-blue */
+
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 240 10% 10%; /* dark gray-blue */
+
+    --popover: 0 0% 100%; /* white */
+    --popover-foreground: 240 10% 10%; /* dark gray-blue */
+
+    /* Primary: Purple (adjusted for light bg, use main foreground for contrast) */
+    --primary: 250 70% 55%; 
+    --primary-foreground: hsl(240 10% 10%); /* Explicit dark HSL for contrast */
+
+    /* Secondary: Blue (adjusted for light bg, keep white text readable) */
+    --secondary: 220 65% 50%;
+    --secondary-foreground: 0 0% 100%; /* white */
+
+    /* Accent: Vibrant Purple (adjusted for light bg, keep white text readable) */
+    --accent: 270 60% 55%;
+    --accent-foreground: 0 0% 100%; /* white */
+
+    --muted: 240 5% 94%; /* light gray */
+    --muted-foreground: 240 5% 45%; /* medium-dark gray */
+
+    --destructive: 0 75% 55%; /* adjusted red */
+    --destructive-foreground: 0 0% 100%; /* white */
+
+    --border: 240 5% 88%; /* light gray border */
+    --input: 240 5% 88%; /* light gray input */
+    --ring: 250 70% 65%; /* primary color ring */
+    
+    /* Add sidebar variables for light theme */
+    --sidebar: 0 0% 100%; /* White sidebar */
+    --sidebar-foreground: hsl(240 10% 10%); /* Explicit dark HSL color for contrast */
+    --sidebar-border: 240 5% 88%; /* Same as main border */
+    --sidebar-active-foreground: hsl(var(--primary)); /* Use primary color for active item in light theme */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Glass morphism effect with new blue/purple theme */
+  .glass {
+    @apply bg-card/70 backdrop-blur-lg border border-primary/20;
+    box-shadow: 0 4px 30px rgba(79, 70, 229, 0.1);
+  }
+
+  .glass-card {
+    @apply glass rounded-xl shadow-lg transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply shadow-xl border-primary/30;
+    box-shadow: 0 8px 32px rgba(79, 70, 229, 0.15);
+  }
+
+  /* Glow effect similar to images */
+  .glow-effect {
+    @apply relative;
+  }
+
+  .glow-effect::after {
+    @apply content-[''] absolute w-full h-full top-0 left-0 rounded-xl -z-10;
+    background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.3), transparent 70%);
+    filter: blur(15px);
+  }
+
+  .glow-blue::after {
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.3), transparent 70%);
+  }
+
+  .glow-purple::after {
+    background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.3), transparent 70%);
+  }
+
+  /* Panel style */
+  .modern-panel {
+    @apply bg-gradient-to-br from-card/90 to-card/60 border border-primary/10 rounded-xl shadow-md;
+  }
+
+  /* Sidebar style */
+  .sidebar {
+    @apply bg-sidebar border-r border-r-primary/10;
+  }
+
+  /* Main content area */
+  .main-content {
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Chart styling */
+  .chart-container {
+    @apply overflow-hidden rounded-xl p-4 glass-card;
+  }
+
+  .stat-card {
+    @apply glass-card p-5 flex flex-col glow-effect;
+  }
+
+  .stat-value {
+    @apply text-4xl font-bold text-foreground mb-1;
+    /* Apply text shadow only in dark mode */
+    @apply dark:text-white;
+  }
+  .dark .stat-value {
+    text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+  }
+
+  .stat-label {
+    @apply text-sm font-medium text-foreground/80;
+    @apply dark:text-white/80;
+  }
+
+  /* Responsive layouts */
+  .dashboard-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5;
+  }
+
+  .page-container {
+    @apply flex min-h-screen overflow-hidden;
+  }
+
+  .dashboard-container {
+    @apply flex-1 overflow-auto transition-all duration-300 ease-in-out;
+  }
+
+  .page-padding {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+
+  /* Button styles */
+  .primary-button {
+    @apply bg-gradient-to-r from-primary to-secondary text-white font-medium py-2 px-6 rounded-lg 
+           shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center;
+  }
+
+  .secondary-button {
+    @apply bg-card/80 text-foreground font-medium py-2 px-6 rounded-lg border border-primary/20
+           shadow-sm hover:shadow-md hover:bg-card transition-all duration-300;
+    @apply dark:text-white;
+  }
+
+  /* Section titles */
+  .section-title {
+    @apply text-2xl sm:text-3xl font-bold text-foreground mb-6;
+    /* Apply text shadow only in dark mode */
+    @apply dark:text-white;
+  }
+
+  .dark .section-title {
+    text-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+  }
+
+  .section-subtitle {
+    @apply text-lg text-white/80 mb-8;
+  }
+
+  /* Chart animations */
+  .chart-animate {
+    @apply transform transition-all duration-500 ease-out;
+  }
+
+  /* Responsive layouts */
+  .responsive-table {
+    @apply w-full overflow-x-auto;
+  }
+
+  .responsive-data-table {
+    @apply w-full overflow-x-auto pb-4;
+  }
+
+  .responsive-data-table table {
+    @apply min-w-full;
+  }
+
+  /* Make file upload area more touch-friendly on mobile */
+  .file-drop-area {
+    @apply min-h-[120px] sm:min-h-[150px];
+  }
+
+  /* Adapt forms for mobile */
+  .responsive-form {
+    @apply space-y-4 sm:space-y-6;
+  }
+
+  .responsive-form-group {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 items-start;
+  }
+
+  /* Chart Animations and Styles */
+  .chart-animate {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .recharts-default-tooltip {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    border: none !important;
+    padding: 0.75rem !important;
+  }
+
+  .recharts-tooltip-label {
+    color: rgb(148, 163, 184) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .recharts-tooltip-item {
+    color: white !important;
+    font-size: 0.875rem !important;
+    padding: 0.25rem 0 !important;
+  }
+
+  .recharts-tooltip-item-name,
+  .recharts-tooltip-item-separator {
+    color: rgb(148, 163, 184) !important;
+  }
+
+  .recharts-tooltip-item-value {
+    font-weight: 600 !important;
+    color: white !important;
+  }
+
+  .recharts-legend-item-text {
+    color: hsl(215.4 16.3% 46.9%) !important;
+    font-size: 0.875rem !important;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    font-size: 0.75rem !important;
+    fill: rgb(148, 163, 184) !important;
+  }
+
+  .recharts-reference-line line {
+    stroke-dasharray: 3 3;
+    stroke: rgba(148, 163, 184, 0.5) !important;
+  }
+
+  /* Card styles for data visualizations */
+  .glass-card {
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .glass-card {
+    background: rgba(17, 24, 39, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Dark mode tooltip */
+  .dark .recharts-default-tooltip {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    color: white !important;
+  }
+
+  /* Additional styling for select and other UI elements */
+  .dark select option {
+    background-color: hsl(224 71% 4%);
+    color: white;
+  }
+
+  /* Custom styling for the tabs */
+  .dark [data-state=active][role=tab] {
+    background-color: hsl(217.2 32.6% 17.5%);
+    color: white;
+    font-weight: 500;
+  }
+
+  /* Improve tooltip appearance in dark mode */
+  .dark [role=tooltip] {
+    --tooltip-bg: hsl(222.2 84% 4.9%);
+    --tooltip-text: hsl(210 40% 98%);
+  }
+
+  /* Chart padding and spacing tweaks */
+  .recharts-wrapper {
+    padding: 0.5rem;
+  }
+
+  /* Legend styling improvements */
+  .recharts-legend-wrapper {
+    padding-top: 1rem !important;
+  }
+
+  .recharts-legend-item-text {
+    margin-left: 4px !important;
+  }
+
+  /* Override grid lines to be more subtle */
+  .recharts-cartesian-grid-horizontal line,
+  .recharts-cartesian-grid-vertical line {
+    stroke: rgba(148, 163, 184, 0.1) !important;
+  }
+
+  /* Enhanced bar chart styling */
+  .recharts-bar-rectangle {
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .recharts-bar-rectangle:hover {
+    opacity: 0.85;
+  }
+
+  /* Pie chart enhancements */
+  .recharts-sector {
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .recharts-sector:hover {
+    opacity: 0.85;
+  }
+
+  /* Text color utilities for Joint Dashboard */
+  .text-sales {
+    color: #8884d8; /* Recharts default purple */
+  }
+
+  .text-reviews {
+    color: #82ca9d; /* Recharts default green */
+  }
+
+  .text-comparison {
+    color: #ffc658; /* Recharts default yellow/orange */
+  }
+}
+
+/* Responsive utility classes */
+.hide-on-mobile {
+  @apply hidden md:block;
+}
+
+.show-on-mobile {
+  @apply block md:hidden;
+}
+
+/* Animation for loading states */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Enhanced responsive styling */
+@media (max-width: 768px) {
+  .sidebar {
+    @apply w-full h-auto fixed bottom-0 left-0 z-50 border-t border-r-0 border-t-secondary/20;
+  }
+  
+  .mobile-container {
+    @apply pb-16;
+  }
+  
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  /* Ensure content is visible when sidebar is hidden on mobile */
+  body {
+    @apply overflow-x-hidden;
+  }
+  
+  button, 
+  .clickable {
+    @apply min-h-[2.5rem] min-w-[2.5rem];
+  }
+
+  .touch-friendly {
+    @apply p-3;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/30 rounded-full hover:bg-accent/50 transition-colors;
+}
+
+/* Enhanced dropdown for large data sets */
+.large-data-dropdown {
+  @apply max-h-60 overflow-y-auto;
+}
+
+/* Improved responsive spacing */
+.responsive-spacing {
+  @apply p-2 sm:p-4 lg:p-6;
+}
+
+/* Enhanced mobile navigation */
+.mobile-nav-container {
+  @apply fixed bottom-0 left-0 w-full bg-sidebar border-t border-secondary/20 shadow-lg z-50;
+}
+
+.mobile-nav {
+  @apply grid grid-cols-4 items-center justify-between py-2 px-4;
+}
+
+/* Fluid typography system */
+.fluid-text-sm {
+  @apply text-xs sm:text-sm;
+}
+
+.fluid-text-base {
+  @apply text-sm sm:text-base;
+}
+
+.fluid-text-lg {
+  @apply text-base sm:text-lg lg:text-xl;
+}
+
+.fluid-text-xl {
+  @apply text-lg sm:text-xl lg:text-2xl;
+}
+
+/* Responsive card layouts */
+.cards-container {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6;
+}
+
+.card-responsive {
+  @apply w-full h-full p-3 sm:p-4 lg:p-6;
+}
+
+/* Responsive content containers */
+.content-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Better handling for data tables on small devices */
+.responsive-data-table {
+  @apply w-full overflow-x-auto pb-4;
+}
+
+.responsive-data-table table {
+  @apply min-w-full;
+}
+
+/* Make file upload area more touch-friendly on mobile */
+.file-drop-area {
+  @apply min-h-[120px] sm:min-h-[150px];
+}
+
+/* Adapt forms for mobile */
+.responsive-form {
+  @apply space-y-4 sm:space-y-6;
+}
+
+.responsive-form-group {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4 items-start;
+}
+
+/* Chart Animations and Styles */
+.chart-animate {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recharts-default-tooltip {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  border: none !important;
+  padding: 0.75rem !important;
+}
+
+.recharts-tooltip-label {
+  color: rgb(148, 163, 184) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.875rem !important;
+}
+
+.recharts-tooltip-item {
+  color: white !important;
+  font-size: 0.875rem !important;
+  padding: 0.25rem 0 !important;
+}
+
+.recharts-tooltip-item-name,
+.recharts-tooltip-item-separator {
+  color: rgb(148, 163, 184) !important;
+}
+
+.recharts-tooltip-item-value {
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+.recharts-legend-item-text {
+  color: hsl(215.4 16.3% 46.9%) !important;
+  font-size: 0.875rem !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-size: 0.75rem !important;
+  fill: rgb(148, 163, 184) !important;
+}
+
+.recharts-reference-line line {
+  stroke-dasharray: 3 3;
+  stroke: rgba(148, 163, 184, 0.5) !important;
+}
+
+/* Card styles for data visualizations */
+.glass-card {
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass-card {
+  background: rgba(17, 24, 39, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Dark mode tooltip */
+.dark .recharts-default-tooltip {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: white !important;
+}
+
+/* Additional styling for select and other UI elements */
+.dark select option {
+  background-color: hsl(224 71% 4%);
+  color: white;
+}
+
+/* Custom styling for the tabs */
+.dark [data-state=active][role=tab] {
+  background-color: hsl(217.2 32.6% 17.5%);
+  color: white;
+  font-weight: 500;
+}
+
+/* Improve tooltip appearance in dark mode */
+.dark [role=tooltip] {
+  --tooltip-bg: hsl(222.2 84% 4.9%);
+  --tooltip-text: hsl(210 40% 98%);
+}
+
+/* Chart padding and spacing tweaks */
+.recharts-wrapper {
+  padding: 0.5rem;
+}
+
+/* Legend styling improvements */
+.recharts-legend-wrapper {
+  padding-top: 1rem !important;
+}
+
+.recharts-legend-item-text {
+  margin-left: 4px !important;
+}
+
+/* Override grid lines to be more subtle */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(148, 163, 184, 0.1) !important;
+}
+
+/* Enhanced bar chart styling */
+.recharts-bar-rectangle {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.recharts-bar-rectangle:hover {
+  opacity: 0.85;
+}
+
+/* Pie chart enhancements */
+.recharts-sector {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.recharts-sector:hover {
+  opacity: 0.85;
+}
+
+/* Text color utilities for Joint Dashboard */
+.text-sales {
+  color: #8884d8; /* Recharts default purple */
+}
+
+.text-reviews {
+  color: #82ca9d; /* Recharts default green */
+}
+
+.text-comparison {
+  color: #ffc658; /* Recharts default yellow/orange */
+}
